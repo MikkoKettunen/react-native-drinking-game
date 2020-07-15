@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "project",
+    "slug": "project",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "com.Juomapeli",
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4333506094316913~2727756723"
+      }
+    },
+    "android": {
+      "package": "com.Juomapeli",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4333506094316913~9687368008"
+      }
+    }
+  }
+}
