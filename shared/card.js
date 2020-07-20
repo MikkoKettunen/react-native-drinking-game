@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
     shadowRadius: 0,
     //marginVertical: 50,
-    marginVertical: Dimensions.get("window").height / 13,
+    marginVertical: 0,
     marginHorizontal: 20,
     //marginHorizontal: Dimensions.get('window').height / 35,
 

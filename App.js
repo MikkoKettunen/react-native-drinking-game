@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import Navigator from "./routes/drawer";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { globalStyles } from "./styles/global";
 import { SafeAreaView, StatusBar } from "react-native";
+import { Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Game from "./shared/game";
+import Asetukset from "./screens/settings";
+
+const Tab = createBottomTabNavigator();
 
 const cardState = {
   card: 0,
@@ -41,7 +48,38 @@ export default function App() {
       return (
         <Provider store={store}>
           <SafeAreaView style={globalStyles.AndroidSafeArea}>
-            <Navigator />
+          <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            if (route.name === 'Pelaa') {
+              return (
+                <Ionicons
+                  name= 'ios-play'
+                  size={30}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'Asetukset') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-list-box' : 'ios-list'}
+                  size={30}
+                  color={color}
+                />
+              );
+            }
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#38B743',
+          inactiveTintColor: 'gray',
+        }}
+      >
+        <Tab.Screen name="Pelaa" component={Game} />
+        <Tab.Screen name="Asetukset" component={Asetukset} />
+      </Tab.Navigator>
+    </NavigationContainer>
           </SafeAreaView>
         </Provider>
       );
@@ -49,7 +87,38 @@ export default function App() {
     if (StatusBar.currentHeight < 25 || StatusBar.currentHeight == undefined) {
       return (
         <Provider store={store}>
-          <Navigator />
+          <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            if (route.name === 'Pelaa') {
+              return (
+                <Ionicons
+                  name= 'ios-play'
+                  size={30}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'Asetukset') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-list-box' : 'ios-list'}
+                  size={30}
+                  color={color}
+                />
+              );
+            }
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#38B743',
+          inactiveTintColor: 'gray',
+        }}
+      >
+        <Tab.Screen name="Pelaa" component={Game} />
+        <Tab.Screen name="Asetukset" component={Asetukset} />
+      </Tab.Navigator>
+    </NavigationContainer>
         </Provider>
       );
     }

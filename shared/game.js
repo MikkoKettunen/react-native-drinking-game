@@ -134,8 +134,6 @@ class Game extends React.Component {
         return require("../assets/images/PNG/QD.png");
       case "KD":
         return require("../assets/images/PNG/KD.png");
-      /*'default:
-        return require('../assets/images/PNG/H.png');*/
     }
   }
 
@@ -211,7 +209,13 @@ class Game extends React.Component {
 
   handleOnPress = () => {
     if (this.props.card < 51) {
+      this.setState({disabled: true});
       this.props.dispatch({ type: "INCREMENT" });
+      setTimeout(() => {
+        this.setState({
+        disabled: false
+      })
+    }, 1000);
     } else {
       this.setState({ startgame: false });
       this.setState({ endgame: true });
@@ -230,6 +234,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      disabled: false,
       overlayVisible: true,
       adTime: false,
       startgame: false,
@@ -241,14 +246,14 @@ class Game extends React.Component {
       interstitialAdId:
         Platform.OS === "ios"
           ? "ca-app-pub-4333506094316913/1031531678"
-          : "	ca-app-pub-3940256099942544/1033173712",
+          : "ca-app-pub-4333506094316913/1961469967",
     };
   }
 
   async componentDidMount() {
     await setTestDeviceIDAsync("EMULATOR");
   }
-  /*
+  
   showInterstitial = async () => {
     if (
       this.props.card == 15 ||
@@ -256,16 +261,16 @@ class Game extends React.Component {
       this.props.card == 51
     ) {
       AdMobInterstitial.setAdUnitID(this.state.interstitialAdId);
-      await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: false });
+      await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
       await AdMobInterstitial.showAdAsync();
     }
   };
-*/
+
   componentDidMount() {
     const { navigation } = this.props;
     this.getData();
     this.showAlert();
-    this.focusListener = navigation.addListener("didFocus", () => {
+    this.focusListener = navigation.addListener("focus", () => {
       this.getData();
     });
   }
@@ -387,7 +392,7 @@ class Game extends React.Component {
             <Card2>
               <Text style={globalStyles.blockText4}>Peli loppui</Text>
               <Text style={globalStyles.blockText5}>
-                Hurjapäät voivat jatkaa painamalla
+                Aloita uusi peli painamalla
               </Text>
             </Card2>
           </TouchableOpacity>
@@ -398,11 +403,10 @@ class Game extends React.Component {
         <View style={globalStyles.container}>
           <ScrollView>
             <Text style={styles.progressText}>
-              {" "}
-              {this.props.card - 52} korttia jäljellä{" "}
+              {this.props.card + 1} {"/ 52"}
             </Text>
 
-            <TouchableOpacity
+            <TouchableOpacity disabled={this.state.disabled}
               onPress={this.handleOnPress}
               {...this.rules}
               //{...this.showInterstitial()}
@@ -429,7 +433,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get("window").width,
     height:
-      Dimensions.get("window").height - Dimensions.get("window").height / 2.6,
+      Dimensions.get("window").height - Dimensions.get("window").height / 2.2,
     resizeMode: "contain",
     alignSelf: "center",
     marginTop: 0,
@@ -440,6 +444,7 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get("window").height / 32,
     textAlign: "center",
     color: "white",
+    marginTop: 20,
   },
 });
 

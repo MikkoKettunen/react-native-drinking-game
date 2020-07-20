@@ -15,14 +15,13 @@ import { globalStyles } from "../styles/global";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
 import { Divider, Button, Tooltip } from "react-native-elements";
-import AppIntroSlider from "react-native-app-intro-slider";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 
 class Settings extends React.Component {
   state = {
-    toolTipVisible: false,
+    toolTipVisible: true,
     popupVisible: true,
     showButton: false,
     showButton2: false,
@@ -519,7 +518,6 @@ class Settings extends React.Component {
   };
 
   render() {
-    if (this.state.showRealApp == false) {
       return (
         <View style={globalStyles.container2}>
           <ScrollView ref="_scrollView" scrollEventThrottle={16}>
@@ -1924,17 +1922,8 @@ class Settings extends React.Component {
           </ScrollView>
         </View>
       );
-    } else {
-      return (
-        <AppIntroSlider
-          renderItem={this._renderItem}
-          data={slides}
-          onDone={this._onDone}
-        />
-      );
-    }
+    } 
   }
-}
 
 export default Settings;
 
