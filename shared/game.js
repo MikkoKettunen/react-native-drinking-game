@@ -409,7 +409,7 @@ class Game extends React.Component {
             <TouchableOpacity disabled={this.state.disabled}
               onPress={this.handleOnPress}
               {...this.rules}
-              //{...this.showInterstitial()}
+              {...this.showInterstitial()}
             >
               <Image style={styles.img} source={this.cardImage} />
             </TouchableOpacity>
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get("window").height / 32,
     textAlign: "center",
     color: "white",
-    marginTop: 20,
+    marginTop: 25,
   },
 });
 

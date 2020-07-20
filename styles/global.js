@@ -38,12 +38,13 @@ export const globalStyles = StyleSheet.create({
   },
   blockText2: {
     //fontSize: 50,
-    fontSize: Dimensions.get("window").height / 13,
+    fontSize: Dimensions.get("window").height / 15,
     color: "#38B743",
     fontFamily: "nunito-bold",
     //marginVertical: 110,
     marginHorizontal: 20,
     marginVertical: Dimensions.get("window").height / 6.1,
+    textAlign: 'center',
   },
   blockText3: {
     //fontSize: 20,

@@ -11,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Game from "./shared/game";
 import Asetukset from "./screens/settings";
+import { AsyncStorage } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -113,6 +114,12 @@ export default function App() {
         tabBarOptions={{
           activeTintColor: '#38B743',
           inactiveTintColor: 'gray',
+          labelStyle: {
+              fontSize: 15,
+            },
+            style: {
+                backgroundColor: 'white',
+              },
         }}
       >
         <Tab.Screen name="Pelaa" component={Game} />
