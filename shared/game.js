@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import { Card2 } from "./card";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
+import { Overlay } from 'react-native-elements';
 import {
   AdMobBanner,
   AdMobInterstitial,

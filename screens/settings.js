@@ -170,22 +170,6 @@ class Settings extends React.Component {
     this.myTextInput11 = React.createRef();
     this.myTextInput12 = React.createRef();
     this.myTextInput13 = React.createRef();
-    data: [
-      {id:1, name: "Mark Doe",   position:"CEO",               image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
-      {id:1, name: "John Doe",   position:"CTO",               image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
-      {id:2, name: "Clark Man",  position:"Creative designer", image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
-      {id:3, name: "Jaden Boor", position:"Front-end dev",     image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
-      {id:4, name: "Srick Tree", position:"Backend-end dev",   image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-      {id:5, name: "John Doe",   position:"Creative designer", image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
-      {id:6, name: "John Doe",   position:"Manager",           image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
-      {id:8, name: "John Doe",   position:"IOS dev",           image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
-      {id:9, name: "John Doe",   position:"Web dev",           image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-      {id:9, name: "John Doe",   position:"Analyst",           image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
-    ]
-  }
-
-  clickEventListener(item) {
-    Alert.alert(item.name)
   }
 
   componentDidMount() {
@@ -525,17 +509,22 @@ class Settings extends React.Component {
       return (
         <View style={globalStyles.container2}>
           <ScrollView ref="_scrollView" scrollEventThrottle={16}>
-            <Text style={styles.settingsHeader}>Kuinka pelata?</Text>
-            <Text style={styles.rulesHeader}>
+            
+            <View style={styles.cardContainer2}>
+            <Text style={styles.containerHeader}>Kuinka pelata?</Text>
+            <Text style={styles.containerText}>
               Pelaaja nostaa kortin ja toimii sääntöjen mukaisesti. Tämän
               jälkeen seuraava pelaaja nostaa kortin jne...
             </Text>
+            </View>
 
-            <Text style={styles.settingsHeader}>Säännöt</Text>
-            <Text style={styles.rulesHeader}>
+            <View style={styles.cardContainer2}>
+            <Text style={styles.containerHeader}>Säännöt</Text>
+            <Text style={styles.containerText}>
               Jokaisella numerolla on oma sääntönsä, maalla ei ole väliä.
               Alempana voit tarkastella ja muokata sääntöjä.
             </Text>
+            </View>
 
             <TouchableOpacity>
               <Feather
@@ -547,40 +536,24 @@ class Settings extends React.Component {
               />
             </TouchableOpacity>
 
-            <Text style={styles.settingsHeader2}>Muokkaus</Text>
-            <Text style={styles.rulesHeader4}>
+            <View style={styles.cardContainer2}>
+            <Text style={styles.containerHeader}>Muokkaus</Text>
+            <Text style={styles.containerText}>
               Paina korttia muokataksesi sääntöä. Alkuperäiset säännöt voi aina
               palauttaa sivun alareunasta.
             </Text>
+            </View>
 
             <Divider style={styles.divider} />
 
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton}>
-                <Tooltip
-                  ref={this.popupRef}
-                  popover={<Text>Muokkaa painamalla</Text>}
-                  toggleOnPress={false}
-                >
-                  <Image
-                    style={styles.img}
-                    source={require("../assets/images/PNG/AH.png")}
-                  />
-                </Tooltip>
-              </TouchableOpacity>
+
+            {/* Rule 1 */}
+            <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/AH.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -663,28 +636,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton2}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/2H.png")}
-                />
-              </TouchableOpacity>
+            {/* Rule 2 */}
+            <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton2}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/2H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule2()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule2()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -697,6 +655,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -714,9 +673,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              two: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ two: value.replace(/['"]+/g, "") });
                             this.onSubmit2();
                             this.hideButton();
                           },
@@ -752,7 +709,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -767,28 +724,14 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-            <Divider style={styles.divider} />
 
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton3}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/3H.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 3 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton3}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/3H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule3()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule3()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -801,6 +744,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -818,9 +762,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              three: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ three: value.replace(/['"]+/g, "") });
                             this.onSubmit3();
                             this.hideButton();
                           },
@@ -856,7 +798,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -871,29 +813,14 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton4}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/4H.png")}
-                />
-              </TouchableOpacity>
+            
+            {/* Rule 4 */}
+            <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton4}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/4H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule4()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule4()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -906,6 +833,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -923,9 +851,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              four: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ four: value.replace(/['"]+/g, "") });
                             this.onSubmit4();
                             this.hideButton();
                           },
@@ -961,7 +887,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -977,28 +903,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton5}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/5H.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 5 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton5}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/5H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule5()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule5()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1011,6 +922,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1028,9 +940,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              five: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ five: value.replace(/['"]+/g, "") });
                             this.onSubmit5();
                             this.hideButton();
                           },
@@ -1066,7 +976,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1081,29 +991,14 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton6}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/6H.png")}
-                />
-              </TouchableOpacity>
+          
+          {/* Rule 6 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton6}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/6H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule6()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule6()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1116,6 +1011,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1133,9 +1029,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              six: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ six: value.replace(/['"]+/g, "") });
                             this.onSubmit6();
                             this.hideButton();
                           },
@@ -1171,7 +1065,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1186,29 +1080,14 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton7}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/7H.png")}
-                />
-              </TouchableOpacity>
+          
+          {/* Rule 7 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton7}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/7H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule7()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule7()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1221,6 +1100,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1238,9 +1118,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              seven: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ seven: value.replace(/['"]+/g, "") });
                             this.onSubmit7();
                             this.hideButton();
                           },
@@ -1276,7 +1154,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1291,29 +1169,14 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton8}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/8H.png")}
-                />
-              </TouchableOpacity>
+          
+          {/* Rule 8 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton8}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/8H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule8()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule8()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1326,6 +1189,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1343,9 +1207,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              eight: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ eight: value.replace(/['"]+/g, "") });
                             this.onSubmit8();
                             this.hideButton();
                           },
@@ -1381,7 +1243,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1397,28 +1259,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton9}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/9H.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 9 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton9}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/9H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule9()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule9()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1431,6 +1278,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1448,9 +1296,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              nine: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ nine: value.replace(/['"]+/g, "") });
                             this.onSubmit9();
                             this.hideButton();
                           },
@@ -1486,7 +1332,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1502,28 +1348,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton10}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/10H.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 10 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton10}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/10H.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule10()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule10()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1536,6 +1367,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1553,9 +1385,7 @@ class Settings extends React.Component {
                           onPress: () => {
                             const value = JSON.stringify(values["rule"]);
 
-                            this.setState({
-                              ten: value.replace(/['"]+/g, ""),
-                            });
+                            this.setState({ ten: value.replace(/['"]+/g, "") });
                             this.onSubmit10();
                             this.hideButton();
                           },
@@ -1591,7 +1421,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1607,28 +1437,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton11}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/JH.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 11 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton11}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/JH.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule11()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule11()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1641,6 +1456,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1694,7 +1510,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1710,28 +1526,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton12}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/QH.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 12 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton12}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/QH.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule12()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule12()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1744,6 +1545,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1797,7 +1599,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1813,28 +1615,13 @@ class Settings extends React.Component {
               </View>
             </Modal>
 
-            <Divider style={styles.divider} />
-
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-              }}
-            >
-              <TouchableOpacity onPress={this.showButton13}>
-                <Image
-                  style={styles.img}
-                  source={require("../assets/images/PNG/KH.png")}
-                />
-              </TouchableOpacity>
+          {/* Rule 13 */}
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={this.showButton13}>
+            <Image style={styles.containerImage} source={require("../assets/images/PNG/KH.png")}/>
+            </TouchableOpacity> 
+            <Text style={styles.containerText}>{this.showRule13()}</Text>
             </View>
-
-            <Text style={styles.rulesText}>{this.showRule13()}</Text>
-
-            {this.state.toolTipVisible && (
-              <Text style={styles.toolText}>Muokkaa painamalla korttia</Text>
-            )}
-
             <Modal
               animationType="slide"
               transparent={true}
@@ -1847,6 +1634,7 @@ class Settings extends React.Component {
                   size={24}
                   onPress={this.hideButton}
                 />
+
                 <Formik
                   initialValues={{ rule: "" }}
                   onSubmit={(values) => {
@@ -1900,7 +1688,7 @@ class Settings extends React.Component {
                         placeholderTextColor="#F8F8FF"
                       />
                       {touched.rule && errors.rule && (
-                        <Text style={styles.errorText}>{errors.rule}</Text>
+                        <Text style={styles.errorText}>*Pakollinen kenttä</Text>
                       )}
 
                       <View style={styles.buttonContainer}>
@@ -1915,8 +1703,7 @@ class Settings extends React.Component {
                 </Formik>
               </View>
             </Modal>
-
-            <Divider style={styles.divider} />
+            
             <View>
               <Button
                 title="Palauta alkuperäiset säännöt"
@@ -1937,14 +1724,6 @@ const styles = StyleSheet.create({
     color: "#007AFF",
     color: "white",
   },
-  returnText: {
-    fontSize: 25,
-    color: "white",
-    fontFamily: "nunito-bold",
-    textAlign: "left",
-    marginLeft: 10,
-  },
-
   divider: {
     backgroundColor: "white",
     //height: 5,
@@ -1953,18 +1732,6 @@ const styles = StyleSheet.create({
     marginBottom: Dimensions.get("window").height / 20,
     //marginTop: 30,
     marginTop: Dimensions.get("window").height / 20,
-  },
-  rulesText: {
-    //fontSize: 20,
-    fontSize: Dimensions.get("window").height / 35,
-    color: "white",
-    fontFamily: "nunito-regular",
-    textAlign: "left",
-    //marginTop: -150,
-    marginTop: -Dimensions.get("window").height / 4.5,
-    marginBottom: 130,
-    //marginLeft: 140,
-    marginLeft: Dimensions.get("window").height / 4.7,
   },
   rulesHeader: {
     //fontSize: 20,
@@ -1977,17 +1744,6 @@ const styles = StyleSheet.create({
     marginBottom: Dimensions.get("window").height / 18,
     //marginLeft: Dimensions.get("window").height / 50,
     marginHorizontal: Dimensions.get("window").height / 40,
-  },
-  rulesHeader3: {
-    //fontSize: 20,
-    fontSize: Dimensions.get("window").height / 40,
-    color: "#007AFF",
-    fontFamily: "nunito-regular",
-    textAlign: "left",
-    marginTop: Dimensions.get("window").height / 10,
-    marginBottom: 0,
-    //marginHorizontal: 10,
-    marginLeft: Dimensions.get("window").height / 50,
   },
   rulesHeader4: {
     //fontSize: 20,
@@ -2024,14 +1780,6 @@ const styles = StyleSheet.create({
     marginBottom: Dimensions.get("window").height / 35,
     textAlign: "center",
   },
-  img: {
-    //width: 150,
-    //height: 150,
-    width: Dimensions.get("window").height / 4.5,
-    height: Dimensions.get("window").height / 4.5,
-    resizeMode: "contain",
-  },
-
   title: {
     //fontSize: 30,
     fontSize: Dimensions.get("window").height / 20,
@@ -2071,120 +1819,60 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: "center",
   },
-  gifImage: {
-    //marginBottom: 50,
-    marginBottom: Dimensions.get("window").height / 13,
-    //height:360,
-    height: Dimensions.get("window").height / 1.6,
-    width: Dimensions.get("window").height / 2.2,
-  },
   errorText: {
     fontSize: 12,
     color: "red",
     textAlign: "left",
     marginLeft: Dimensions.get("window").height / 35,
   },
-
-  sliderContainer: {
-    flex: 1,
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-    backgroundColor: "#38B743",
-    justifyContent: "center",
+  cardContainer: {
     alignItems: "center",
+    width: Dimensions.get("window").width - 50,
+    justifyContent: 'center',
+    marginBottom: 50,
+    flex: 1,
+    alignSelf: 'center',
+    padding: 20,
+    backgroundColor: 'rgba(255,255,255, 0.2)',
+    borderRadius: 20,
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2},
+    shadowRadius: 10,
+    elevation: 3,
   },
-  toolText: {
-    color: "#007AFF",
-    marginLeft: Dimensions.get("window").height / 25,
-    marginTop: 15,
+  cardContainer2: {
+    alignItems: "center",
+    width: Dimensions.get("window").width - 50,
+    justifyContent: 'center',
+    marginTop: 50,
+    flex: 1,
+    alignSelf: 'center',
+    padding: 20,
+    backgroundColor: 'rgba(255,255,255, 0.2)',
+    borderRadius: 20,
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2},
+    shadowRadius: 10,
+    elevation: 3,
+  },
+  containerImage: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+  },
+  containerText: {
+    marginTop: 20,
+    fontSize: Dimensions.get("window").height / 35,
+    color: "white",
     fontFamily: "nunito-regular",
   },
-  container:{
-    flex:1,
-    marginTop:20,
+  containerHeader: {
+    fontSize: Dimensions.get("window").height / 18,
+    marginTop: 0,
+    color: "white",
+    fontFamily: "nunito-bold",
   },
-  list: {
-    paddingHorizontal: 5,
-    backgroundColor:"#E6E6E6",
-  },
-  listContainer:{
-   alignItems:'center'
-  },
-  /******** card **************/
-  card:{
-    shadowColor: '#00000021',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-    elevation: 12,
 
-    marginVertical: 5,
-    backgroundColor:"white",
-    flexBasis: '46%',
-    marginHorizontal: 5,
-  },
-  cardFooter: {
-    paddingVertical: 17,
-    paddingHorizontal: 16,
-    borderTopLeftRadius: 1,
-    borderTopRightRadius: 1,
-    flexDirection: 'row',
-    alignItems:"center", 
-    justifyContent:"center"
-  },
-  cardContent: {
-    paddingVertical: 12.5,
-    paddingHorizontal: 16,
-  },
-  cardHeader:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 12.5,
-    paddingBottom: 25,
-    paddingHorizontal: 16,
-    borderBottomLeftRadius: 1,
-    borderBottomRightRadius: 1,
-  },
-  userImage:{
-    height: 120,
-    width: 120,
-    borderRadius:60,
-    alignSelf:'center',
-    borderColor:"#DCDCDC",
-    borderWidth:3,
-  },
-  name:{
-    fontSize:18,
-    flex:1,
-    alignSelf:'center',
-    color:"#008080",
-    fontWeight:'bold'
-  },
-  position:{
-    fontSize:14,
-    flex:1,
-    alignSelf:'center',
-    color:"#696969"
-  },
-  followButton: {
-    marginTop:10,
-    height:35,
-    width:100,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:30,
-    backgroundColor: "#00BFFF",
-  },
-  followButtonText:{
-    color: "#FFFFFF",
-    fontSize:20,
-  },
-  icon:{
-    height: 20,
-    width: 20, 
-  }
 });

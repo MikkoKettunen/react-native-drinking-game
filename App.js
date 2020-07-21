@@ -5,13 +5,11 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { globalStyles } from "./styles/global";
 import { SafeAreaView, StatusBar } from "react-native";
-import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Game from "./shared/game";
 import Asetukset from "./screens/settings";
-import { AsyncStorage } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
