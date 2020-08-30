@@ -5,7 +5,6 @@ import {
     TouchableOpacity,
     Image,
     StyleSheet,
-    Platform,
     Alert,
 } from "react-native";
 import cardDeck from "./cardDeck";
@@ -16,14 +15,13 @@ import { connect } from "react-redux";
 import { Card2 } from "./card";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
-import { Overlay } from "react-native-elements";
-import {
+/* import {
     AdMobBanner,
     AdMobInterstitial,
     PublisherBanner,
     AdMobRewarded,
     setTestDeviceIDAsync,
-} from "expo-ads-admob";
+} from "expo-ads-admob"; */
 
 const deck1 = new cardDeck();
 deck1.shuffle();
@@ -102,7 +100,7 @@ class Game extends React.Component {
             case "9C":
                 return require("../assets/images/PNG/9C.png");
             case "10C":
-                return require("../assets/images/PNG/100C.png");
+                return require("../assets/images/PNG/10C.png");
             case "JC":
                 return require("../assets/images/PNG/JC.png");
             case "QC":
@@ -235,24 +233,46 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            A: "Kortin nostaja juo 1",
+            two: "Kortin nostaja juo 2",
+            three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3",
+            four: "Huutakaa Hitler! Viimeinen huutaja juo 3",
+            five: "Huutakaa Hitler! Viimeinen huutaja juo 3",
+            six:
+                "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit",
+            seven:
+                "VESIPUTOUS! Kaikki alkavat juomaan samaan aikaan, kun kortin nostanut pelaaja lopettaa juomisen niin seuraava saa lopettaa ja sen jälkeen seuraava jne.",
+            eight:
+                "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3",
+            nine:
+                "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä",
+            ten:
+                "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu kun seuraava pelaaja nostaa saman kortin",
+            J:
+                "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana",
+            Q:
+                "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo.",
+            K:
+                "Tarina. Kortin nostaja sanoo sanan ja jokainen jatkaa tarinaa uudella sanalla, toistaen ensiksi jo kerrotun tarinan. Epäonnistuja juo 3.",
             disabled: false,
             overlayVisible: true,
             adTime: false,
             startgame: false,
             endgame: false,
-            bannerAdId:
+            /* bannerAdId:
                 Platform.OS === "ios"
                     ? "ca-app-pub-4333506094316913/3849266704"
                     : "ca-app-pub-4333506094316913/5545491758",
             interstitialAdId:
                 Platform.OS === "ios"
                     ? "ca-app-pub-4333506094316913/1031531678"
-                    : "ca-app-pub-4333506094316913/1961469967",
+                    : "ca-app-pub-4333506094316913/1961469967", */
         };
     }
 
-    async componentDidMount() {
+    /* async componentDidMount() {
         await setTestDeviceIDAsync("EMULATOR");
+        AdMobInterstitial.setAdUnitID(this.state.interstitialAdId);
     }
 
     showInterstitial = async () => {
@@ -261,13 +281,16 @@ class Game extends React.Component {
             this.props.card == 30 ||
             this.props.card == 51
         ) {
-            AdMobInterstitial.setAdUnitID(this.state.interstitialAdId);
-            await AdMobInterstitial.requestAdAsync({
-                servePersonalizedAds: true,
-            });
-            await AdMobInterstitial.showAdAsync();
+            try {
+                await AdMobInterstitial.requestAdAsync({
+                    servePersonalizedAds: false,
+                });
+                await AdMobInterstitial.showAdAsync();
+            } catch (error) {
+                console.log(error);
+            }
         }
-    };
+    }; */
 
     componentDidMount() {
         const { navigation } = this.props;
@@ -343,7 +366,7 @@ class Game extends React.Component {
                 this.setState({ K: value13 });
             }
         } catch (e) {
-            // error reading code
+            console.log(e);
         }
     };
 
@@ -353,7 +376,6 @@ class Game extends React.Component {
 
     showAlert2 = () => {
         alert("Muista juoda vastuullisesti");
-        //this.setState({ overlayVisible: false });
     };
 
     showAlert = () => {
@@ -415,7 +437,6 @@ class Game extends React.Component {
                             disabled={this.state.disabled}
                             onPress={this.handleOnPress}
                             {...this.rules}
-                            {...this.showInterstitial()}
                         >
                             <Image style={styles.img} source={this.cardImage} />
                         </TouchableOpacity>

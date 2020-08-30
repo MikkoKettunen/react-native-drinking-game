@@ -14,10 +14,10 @@ import {
 import { globalStyles } from "../styles/global";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
-import { Divider, Button, Tooltip } from "react-native-elements";
+import { Divider, Button } from "react-native-elements";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 class Settings extends React.Component {
     state = {
@@ -502,7 +502,6 @@ class Settings extends React.Component {
             y: Dimensions.get("window").height / 1.2,
             animated: true,
         });
-        //this.popupRef.current.toggleTooltip();
     };
 
     render() {
@@ -617,7 +616,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -722,7 +721,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput2}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -827,7 +826,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput3}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -932,7 +931,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput4}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1037,7 +1036,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput5}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1142,7 +1141,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput6}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1247,7 +1246,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput7}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1352,7 +1351,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput8}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1457,7 +1456,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput9}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1562,7 +1561,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput10}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1667,7 +1666,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput11}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1772,7 +1771,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput12}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1877,7 +1876,7 @@ class Settings extends React.Component {
                                             returnKeyType={"done"}
                                             ref={this.myTextInput13}
                                             value={values.rule}
-                                            multiline={false}
+                                            multiline={true}
                                             onChangeText={handleChange("rule")}
                                             onBlur={() =>
                                                 setFieldTouched("rule")
@@ -1919,11 +1918,6 @@ class Settings extends React.Component {
 export default Settings;
 
 const styles = StyleSheet.create({
-    arrowDown: {
-        alignSelf: "center",
-        color: "#007AFF",
-        color: "white",
-    },
     divider: {
         backgroundColor: "white",
         //height: 5,
@@ -1997,10 +1991,10 @@ const styles = StyleSheet.create({
         //fontSize: 18,
         fontSize: Dimensions.get("window").height / 37,
         //height: 50,
-        height: Dimensions.get("window").height / 5,
+        height: Dimensions.get("window").height / 4,
         borderColor: "white",
         borderWidth: 2,
-        borderRadius: 10,
+        borderRadius: 8,
         marginHorizontal: Dimensions.get("window").width / 23,
         //marginTop: 10,
         //marginTop: Dimensions.get("window").height / 50,
@@ -2035,11 +2029,11 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "rgba(255,255,255, 0.2)",
         borderRadius: 8,
-        shadowColor: "black",
+        /* shadowColor: "black",
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10,
-        elevation: 3,
+        shadowRadius: 10, */
+        /* elevation: 3, */
     },
     cardContainer2: {
         alignItems: "center",
@@ -2051,11 +2045,11 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "rgba(255,255,255, 0.2)",
         borderRadius: 8,
-        shadowColor: "black",
+        /* shadowColor: "black",
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10,
-        elevation: 3,
+        shadowRadius: 10, */
+        /*  elevation: 3, */
     },
     containerImage: {
         width: 200,
