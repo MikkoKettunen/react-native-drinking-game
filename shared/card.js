@@ -28,15 +28,12 @@ export function Card3(props) {
 
 const styles = StyleSheet.create({
     card: {
-        borderRadius: 0,
-        elevation: 3,
-        backgroundColor: "#38B743",
-        shadowOffset: { width: 1, height: 1 },
-        shadowColor: "#333",
-        shadowOpacity: 0,
-        shadowRadius: 0,
+        marginTop: 20,
+        backgroundColor: "rgba(255,255,255, 0.2)",
+        borderRadius: 8,
         marginHorizontal: 0,
         marginVertical: 0,
+        paddingHorizontal: 20,
     },
     cardContent: {
         marginHorizontal: 0,

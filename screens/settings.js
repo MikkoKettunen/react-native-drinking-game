@@ -14,7 +14,7 @@ import {
 import { globalStyles } from "../styles/global";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
-import { Divider, Button } from "react-native-elements";
+import { Button } from "react-native-elements";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -38,25 +38,25 @@ class Settings extends React.Component {
         showButton13: false,
         showModal: false,
         showRealApp: false,
-        A: "Kortin nostaja juo 1",
-        two: "Kortin nostaja juo 2",
-        three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3",
-        four: "Huutakaa Hitler! Viimeinen huutaja juo 3",
-        five: "Huutakaa Hitler! Viimeinen huutaja juo 3",
+        A: "Kortin nostaja juo 1.",
+        two: "Kortin nostaja juo 2.",
+        three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3.",
+        four: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
+        five: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
         six:
-            "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit",
+            "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit.",
         seven:
             "VESIPUTOUS! Kaikki alkavat juomaan samaan aikaan, kun kortin nostanut pelaaja lopettaa juomisen niin seuraava saa lopettaa ja sen jälkeen seuraava jne.",
         eight:
             "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3",
         nine:
-            "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä",
+            "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Sääntöä rikkova pelaaja juo 3. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä.",
         ten:
-            "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu kun seuraava pelaaja nostaa saman kortin",
+            "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu, kun seuraava pelaaja nostaa saman kortin.",
         J:
-            "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana",
+            "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana.",
         Q:
-            "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo.",
+            "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo. Orjuus loppuu, kun seuraava pelaaja nostaa saman kortin.",
         K:
             "Tarina. Kortin nostaja sanoo sanan ja jokainen jatkaa tarinaa uudella sanalla, toistaen ensiksi jo kerrotun tarinan. Epäonnistuja juo 3.",
     };
@@ -67,19 +67,19 @@ class Settings extends React.Component {
             await AsyncStorage.setItem("two", "Kortin nostaja juo 2");
             await AsyncStorage.setItem(
                 "three",
-                "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3"
+                "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3."
             );
             await AsyncStorage.setItem(
                 "four",
-                "Huutakaa Hitler! Viimeinen huutaja juo 3"
+                "Huutakaa Hitler! Viimeinen huutaja juo 3."
             );
             await AsyncStorage.setItem(
                 "five",
-                "Huutakaa Hitler! Viimeinen huutaja juo 3"
+                "Huutakaa Hitler! Viimeinen huutaja juo 3."
             );
             await AsyncStorage.setItem(
                 "six",
-                "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit"
+                "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit."
             );
             await AsyncStorage.setItem(
                 "seven",
@@ -87,38 +87,43 @@ class Settings extends React.Component {
             );
             await AsyncStorage.setItem(
                 "eight",
-                "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3"
+                "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3."
             );
             await AsyncStorage.setItem(
                 "nine",
-                "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä"
+                "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Sääntöä rikkova pelaaja juo 3. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä."
             );
             await AsyncStorage.setItem(
                 "ten",
-                "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu kun seuraava pelaaja nostaa saman kortin"
+                "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu, kun seuraava pelaaja nostaa saman kortin."
             );
             await AsyncStorage.setItem(
                 "J",
-                "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana"
+                "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana."
             );
             await AsyncStorage.setItem(
                 "Q",
-                "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo."
+                "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo. Orjuus loppuu, kun seuraava pelaaja nostaa saman kortin."
             );
             await AsyncStorage.setItem(
                 "K",
                 "Tarina. Kortin nostaja sanoo sanan ja jokainen jatkaa tarinaa uudella sanalla, toistaen ensiksi jo kerrotun tarinan. Epäonnistuja juo 3."
             );
-            this.setState({ A: "Kortin nostaja juo 1" });
-            this.setState({ two: "Kortin nostaja juo 2" });
+            this.setState({ A: "Kortin nostaja juo 1." });
+            this.setState({ two: "Kortin nostaja juo 2." });
             this.setState({
-                three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3",
+                three:
+                    "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3.",
             });
-            this.setState({ four: "Huutakaa Hitler! Viimeinen huutaja juo 3" });
-            this.setState({ five: "Huutakaa Hitler! Viimeinen huutaja juo 3" });
+            this.setState({
+                four: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
+            });
+            this.setState({
+                five: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
+            });
             this.setState({
                 six:
-                    "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit",
+                    "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit.",
             });
             this.setState({
                 seven:
@@ -126,23 +131,23 @@ class Settings extends React.Component {
             });
             this.setState({
                 eight:
-                    "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3",
+                    "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3.",
             });
             this.setState({
                 nine:
-                    "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä",
+                    "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Sääntöä rikkova pelaaja juo 3. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä.",
             });
             this.setState({
                 ten:
-                    "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu kun seuraava pelaaja nostaa saman kortin",
+                    "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu, kun seuraava pelaaja nostaa saman kortin.",
             });
             this.setState({
                 J:
-                    "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana",
+                    "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana.",
             });
             this.setState({
                 Q:
-                    "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo.",
+                    "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo. Orjuus loppuu, kun seuraava pelaaja nostaa saman kortin.",
             });
             this.setState({
                 K:
@@ -536,7 +541,7 @@ class Settings extends React.Component {
                         </Text>
                     </View>
 
-                    <Divider style={styles.divider} />
+                    <View style={styles.divider2}></View>
 
                     {/* Rule 1 */}
                     <View style={styles.cardContainer}>
@@ -1903,7 +1908,7 @@ class Settings extends React.Component {
                         </View>
                     </Modal>
 
-                    <View>
+                    <View style={styles.defaultRulesButton}>
                         <Button
                             title="Palauta alkuperäiset säännöt"
                             onPress={this.returnAlert}
@@ -1918,14 +1923,15 @@ class Settings extends React.Component {
 export default Settings;
 
 const styles = StyleSheet.create({
-    divider: {
+    divider2: {
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center",
         backgroundColor: "white",
-        //height: 5,
-        height: Dimensions.get("window").height / 300,
-        //marginBottom: 30,
-        marginBottom: Dimensions.get("window").height / 20,
-        //marginTop: 30,
-        marginTop: Dimensions.get("window").height / 20,
+        marginHorizontal: 25,
+        marginVertical: 50,
+        height: 2,
+        /* width: Dimensions.get("window").width - 40, */
     },
     rulesHeader: {
         //fontSize: 20,
@@ -2002,11 +2008,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     buttonContainer: {
-        //width: "30%",
-        padding: Dimensions.get("window").width / 10,
+        paddingVertical: Dimensions.get("window").width / 10,
+        paddingHorizontal: Dimensions.get("window").width / 4,
     },
     modalClose: {
-        marginBottom: 150,
+        marginBottom: 130,
         borderWidth: 2,
         borderColor: "#F8F8FF",
         padding: 10,
@@ -2029,11 +2035,6 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "rgba(255,255,255, 0.2)",
         borderRadius: 8,
-        /* shadowColor: "black",
-        shadowOpacity: 0.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10, */
-        /* elevation: 3, */
     },
     cardContainer2: {
         alignItems: "center",
@@ -2045,11 +2046,10 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "rgba(255,255,255, 0.2)",
         borderRadius: 8,
-        /* shadowColor: "black",
-        shadowOpacity: 0.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10, */
-        /*  elevation: 3, */
+    },
+    defaultRulesButton: {
+        paddingHorizontal: 20,
+        paddingBottom: 20,
     },
     containerImage: {
         width: 200,

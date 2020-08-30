@@ -33,8 +33,6 @@ export const globalStyles = StyleSheet.create({
         color: "white",
         fontFamily: "nunito-regular",
         textAlign: "left",
-        //marginLeft: 10,
-        marginLeft: Dimensions.get("window").height / 50,
     },
     blockText2: {
         //fontSize: 50,

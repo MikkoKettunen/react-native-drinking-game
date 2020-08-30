@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { Card2 } from "./card";
 import { Dimensions } from "react-native";
 import { AsyncStorage } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 /* import {
     AdMobBanner,
     AdMobInterstitial,
@@ -233,25 +234,25 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            A: "Kortin nostaja juo 1",
-            two: "Kortin nostaja juo 2",
-            three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3",
-            four: "Huutakaa Hitler! Viimeinen huutaja juo 3",
-            five: "Huutakaa Hitler! Viimeinen huutaja juo 3",
+            A: "Kortin nostaja juo 1.",
+            two: "Kortin nostaja juo 2.",
+            three: "Kortin nostaja juo 1, seuraava pelaaja 2 ja seuraava 3.",
+            four: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
+            five: "Huutakaa Hitler! Viimeinen huutaja juo 3.",
             six:
-                "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit",
+                "Kategoria. Kortin nostaja päättää kategorian ja sanoo siihen kuuluvan asian. Pelaaja joka ei enää keksi tai sanoo jo aiemmin sanotun asian, joutuu juomaan 3. Esimerkkikategoria: automerkit.",
             seven:
                 "VESIPUTOUS! Kaikki alkavat juomaan samaan aikaan, kun kortin nostanut pelaaja lopettaa juomisen niin seuraava saa lopettaa ja sen jälkeen seuraava jne.",
             eight:
-                "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3",
+                "Riimi. Kortin nostanut pelaaja sanoo sanan ja se joka ei enää keksi riimiä kyseiselle sanalle, juo 3.",
             nine:
-                "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä",
+                "Sääntö. Kortin nostanut pelaaja saa keksiä säännön, joka pätee loppupelin ajan. Sääntöä rikkova pelaaja juo 3. Esimerkkisääntö: Pitää juoda aina vasemmalla kädellä.",
             ten:
-                "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu kun seuraava pelaaja nostaa saman kortin",
+                "Kysymyskortti. Jos kukaan vastaa kortin nostaneen pelaajan kysymykseen pelin aikana, joutuu hän juoda 3. Peliin liittyviin kysymyksiin saa vastata ja kysymysoikeus loppuu, kun seuraava pelaaja nostaa saman kortin.",
             J:
-                "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana",
+                "Taukokortti. Kortin nostanut pelaaja on oikeutettu yhteen lyhyeen taukoon pelin aikana.",
             Q:
-                "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo.",
+                "Orjakortti. Kortin nostaja saa päättää itselleen henkilön, joka joutuu juomaan aina, kun hän juo. Orjuus loppuu, kun seuraava pelaaja nostaa saman kortin.",
             K:
                 "Tarina. Kortin nostaja sanoo sanan ja jokainen jatkaa tarinaa uudella sanalla, toistaen ensiksi jo kerrotun tarinan. Epäonnistuja juo 3.",
             disabled: false,
@@ -309,6 +310,27 @@ class Game extends React.Component {
         this.setState({ startgame: false });
         this.setState({ endgame: false });
         this.props.dispatch({ type: "NEWGAME" });
+        deck1.shuffle();
+    };
+
+    newGame = () => {
+        Alert.alert(
+            "Huomio",
+            "Haluatko varmasti aloittaa uuden pelin?",
+            [
+                {
+                    text: "Peruuta",
+                    style: "cancel",
+                },
+                {
+                    text: "OK",
+                    onPress: () => {
+                        this.startOver();
+                    },
+                },
+            ],
+            { cancelable: false }
+        );
     };
 
     getData = async () => {
@@ -432,6 +454,15 @@ class Game extends React.Component {
                         <Text style={styles.progressText}>
                             {this.props.card + 1} {"/ 52"}
                         </Text>
+                        <View style={styles.newGame}>
+                            <TouchableOpacity onPress={this.newGame}>
+                                <MaterialIcons
+                                    name="autorenew"
+                                    size={35}
+                                    color="white"
+                                />
+                            </TouchableOpacity>
+                        </View>
 
                         <TouchableOpacity
                             disabled={this.state.disabled}
@@ -443,8 +474,7 @@ class Game extends React.Component {
 
                         <Card>
                             <Text style={globalStyles.blockText}>
-                                {" "}
-                                {this.rules}{" "}
+                                {this.rules}
                             </Text>
                         </Card>
                     </ScrollView>
@@ -464,7 +494,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width,
         height:
             Dimensions.get("window").height -
-            Dimensions.get("window").height / 2.2,
+            Dimensions.get("window").height / 1.8,
         resizeMode: "contain",
         alignSelf: "center",
         marginTop: 0,
@@ -476,6 +506,13 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "white",
         marginTop: 25,
+    },
+
+    newGame: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-end",
+        marginTop: -30,
     },
 });
 

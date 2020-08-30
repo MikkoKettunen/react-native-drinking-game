@@ -3,71 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="38775eab-970e-429d-8ccb-dade73e6eb81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/gif3.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/gif4.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/hitler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/100C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/10D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/10D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/10H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/10H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/10S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/10S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/2C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/2C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/2D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/2D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/2H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/2H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/2S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/2S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/3C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/3C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/3D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/3D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/3H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/3H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/3S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/3S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/4C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/4C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/4D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/4D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/4H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/4H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/4S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/4S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/5C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/5C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/5D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/5D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/5H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/5H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/5S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/5S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/6C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/6C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/6D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/6D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/6H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/6H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/6S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/6S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/7C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/7C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/7D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/7D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/7H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/7H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/7S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/7S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/8C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/8C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/8D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/8D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/8H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/8H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/8S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/8S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/9C.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/9C.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/9D.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/9D.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/9H.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/9H.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/9S.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/9S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/AC.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/AC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/AD.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/AD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/AH.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/AH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/AH3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/AS.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/AS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/JC.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/JC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/JD.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/JD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/JH.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/JH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/JS.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/JS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/KC.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/KC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/KD.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/KD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/KH.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/KH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/KS.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/KS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/QC.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/QC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/QD.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/QD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/QH.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/QH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/PNG/QS.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/PNG/QS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/Playing Cards/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/__MACOSX/Playing Cards/._PNG-cards-1.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/__MACOSX/Playing Cards/._SVG-cards-1.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/card.js" beforeDir="false" afterPath="$PROJECT_DIR$/shared/card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/shared/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/global.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
